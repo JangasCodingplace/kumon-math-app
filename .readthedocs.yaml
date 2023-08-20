@@ -8,7 +8,7 @@ version: 2
 build:
   os: ubuntu-22.04
   tools:
-    nodejs: "20.3"
+    nodejs: "20"
 
 mkdocs:
   configuration: mkdocs.yml
