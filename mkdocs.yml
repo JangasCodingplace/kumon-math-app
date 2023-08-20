@@ -4,6 +4,7 @@ edit_uri: https://github.com/JangasCodingplace/kumon-math-app/blob/main/docs/
 nav:
   - Introduction: index.md
   - Getting Started: getting-started.md
+  - Developer Tutorial: developer-tutorial.md
   - Contributing: CONTRIBUTING.md
   - License: LICENSE
   - Changelog: CHANGELOG.md

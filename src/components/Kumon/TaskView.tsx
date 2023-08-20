@@ -2,7 +2,7 @@
 interface TaskProps {}
 
 const TaskView = ({}: TaskProps) => {
-    return <></>
+  return <></>
 }
 
 export default TaskView;
