@@ -1,6 +1,6 @@
 site_name: Kumon Math App
 repo_url: https://github.com/JangasCodingplace/kumon-math-app
-site_url: https://example.com/
+edit_uri: https://github.com/JangasCodingplace/kumon-math-app/blob/main/docs/
 nav:
   - Introduction: index.md
   - Getting Started: getting-started.md
