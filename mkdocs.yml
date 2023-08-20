@@ -1,0 +1,6 @@
+site_name: Kumon Math App
+site_url: https://example.com/
+nav:
+  - Home: index.md
+  - About: about.md
+theme: readthedocs
