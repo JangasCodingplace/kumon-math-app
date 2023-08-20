@@ -5,5 +5,6 @@ nav:
   - Introduction: index.md
   - Getting Started: getting-started.md
   - Contributing: CONTRIBUTING.md
+  - License: LICENSE.md
   - Changelog: CHANGELOG.md
 theme: readthedocs
