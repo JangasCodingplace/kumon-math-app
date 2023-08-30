@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Button, Text, SafeAreaView, StyleSheet, Dimensions, useWindowDimensions } from 'react-native';
+import React, { useRef } from 'react';
+import { Button, Text, SafeAreaView, StyleSheet, useWindowDimensions } from 'react-native';
 import { Canvas, CanvasRef } from '@benjeau/react-native-draw';
 import { GeneratedSimpleCalcTask } from '../Kumon/GenericTask';
 
