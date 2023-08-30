@@ -2,7 +2,7 @@ import { GeneratedSimpleCalcTask } from "../GenericTask";
 
 
 class SimpleAddition extends GeneratedSimpleCalcTask {
-
+  public static taskId = "simple-addition"
   public static generate(): SimpleAddition {
     const firstNumber = Math.floor(Math.random() * 100);
     const secondNumber = Math.floor(Math.random() * 100);

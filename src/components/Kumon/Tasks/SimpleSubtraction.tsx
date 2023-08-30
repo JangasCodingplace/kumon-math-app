@@ -2,6 +2,7 @@ import { GeneratedSimpleCalcTask } from "../GenericTask";
 
 
 class SimpleSubtraction extends GeneratedSimpleCalcTask {
+  public static taskId = "simple-substraction"
 
   public static generate(): SimpleSubtraction {
     const firstNumber = Math.floor(Math.random() * 100);

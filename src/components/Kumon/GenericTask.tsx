@@ -17,6 +17,7 @@ export class GeneratedSimpleCalcTask implements SimpleCalcTask {
   latexTask: string
   simpleSolution: string
   latexSolution: string
+  public static taskId: string = "none-unique"
 
   constructor(simpleTask: string, latexTask: string, simpleSolution: string, latexSolution: string) {
     this.simpleTask = simpleTask

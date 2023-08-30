@@ -6,6 +6,8 @@ import { GeneratedSimpleCalcTask } from "../GenericTask";
   * of a quadratic equation.
   */
 class RootGrade2 extends GeneratedSimpleCalcTask {
+  public static taskId = "root-grade-2"
+
   public static generate(): RootGrade2 {
     const root1 = Math.floor(Math.random() * 20);
     const root2 = Math.floor(Math.random() * -20);
