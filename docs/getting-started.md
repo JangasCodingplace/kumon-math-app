@@ -81,5 +81,7 @@ npm run start
 ```
 
 This will start the Expo CLI and a QR Code will be displayed in the
-terminal. You can scan this QR Code using the Expo Go app on your
+terminal. You can scan this QR Code using the Expo Go app on your.
+
+Test
 device to run the app.
