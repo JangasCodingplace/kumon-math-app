@@ -13,7 +13,7 @@ export default function App() {
         <View style={styels.navbtn}><Text style={styels.navtext}>History</Text></View>
         <View style={styels.navbtn}><Text style={styels.navtext}>Credits</Text></View>
       </View>
-       
+      
       <NavigationBar></NavigationBar>    
       <Text>Welcome</Text>
       <NavigationBar />

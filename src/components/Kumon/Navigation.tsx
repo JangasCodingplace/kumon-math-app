@@ -2,11 +2,10 @@ import { View } from "react-native"
 import { Text } from "react-native-svg"
 import { StyleSheet } from "react-native";
 
- function NavigationBar(){
-    return (<View style={styels.div}><Text>a</Text></View>)
+const NavigatinBar = () => { 
+    return <View><Text>TextTesta</Text></View>
  }
 
- export default NavigationBar;
 
  const styels= StyleSheet.create({
 
@@ -14,3 +13,5 @@ import { StyleSheet } from "react-native";
       backgroundColor:"red"
    }
  });
+
+ export default NavigatinBar;
