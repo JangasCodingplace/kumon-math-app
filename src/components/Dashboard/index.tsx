@@ -1,6 +1,6 @@
 import profiles from '../Kumon/Profiles';
 import { StyleSheet, SectionList, Text, View, TouchableOpacity } from 'react-native';
-
+// import 'react-native-gesture-handler';
 
 interface DashboardProps {
   navigation: any
