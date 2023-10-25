@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import profiles from '../Kumon/Profiles';
 import { StyleSheet, SectionList, Text, View, TouchableOpacity } from 'react-native';
 // import 'react-native-gesture-handler';
@@ -26,32 +27,41 @@ const DashboardView = ({navigation}: DashboardProps) => {
         )}
         keyExtractor={(item, index) => `basicListEntry-${index}`}
       />
+      <View><Text onPress={() => navigation.navigate('Task', { taskType: 1 })}>Pressme</Text></View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex:1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    display:"flex",
   },
   sectionHeader: {
+    color:"#fff",
+    width:400,
     paddingTop: 2,
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 2,
     fontSize: 14,
     fontWeight: 'bold',
-    backgroundColor: 'rgba(247,247,247,1.0)',
+    backgroundColor: 'blue',
   },
   item: {
+    backgroundColor:"rgb(240, 246, 255)",
+    borderBlockColor:"blue",
+    borderBottomWidth:1,
     padding: 10,
     fontSize: 18,
     height: 44,
   },
 });
+
+
 
 
 export default DashboardView;
