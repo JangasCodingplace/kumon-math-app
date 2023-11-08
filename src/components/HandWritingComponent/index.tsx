@@ -3,7 +3,8 @@ import { Button, Text, SafeAreaView, StyleSheet, useWindowDimensions, Alert, Vie
 import { Canvas, CanvasRef } from '@benjeau/react-native-draw';
 import { GeneratedSimpleCalcTask } from '../Kumon/GenericTask';
 import { Ionicons } from '@expo/vector-icons';
-import { State } from 'react-native-gesture-handler';
+import { Buffer } from 'buffer';
+import axios from 'axios';
 
 interface HandWritingComponentProps {
   taskGenerator: typeof GeneratedSimpleCalcTask
@@ -27,19 +28,45 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
   const [task,setTask]=useState<GeneratedSimpleCalcTask|null>(null)
   const [taskcount,setTaskcount]=useState(0)
   const [tasks,settasks]=useState<GeneratedSimpleCalcTask[]>([])
+  const [bytes,setbytes]=useState([])
   
   const time=9
   const timelimit=11
   const righttasks=6
   const tasklimit=9
-  
+
+  // version1
+  const baseUrl = 'https://google.com';
+ 
+  axios.get(baseUrl).then((response) => {
+    console.log(response.data);
+  });
+
+
+
+  const svgtobas64=(svgXml:string)=>{
+    const base64 =Buffer.from(svgXml).toString("base64")
+    // console.log(base64)
+    axios.post("https://google.com", base64)
+    return base64
+  }
   
   const newTask= ()=>{
     setTaskcount(taskcount+1)
-    
-    console.log(taskcount)
+    console.log(canvasRef.current?.getSvg());
+    const svgXml = canvasRef.current?.getSvg();
+
+
+
+    // console.log(svgXml)
+    if (svgXml){
+      svgtobas64(svgXml)
+    }
+
+
+    // console.log(taskcount)
     if(taskcount>=10){
-      console.log(tasks)
+      // console.log(tasks)
       if(righttasks>=tasklimit&&time<=timelimit){
         Alert.alert("Super! Du bist Fertig für heute",
          "Nicht nur deine Zeit war fenomenal, auch deine Ergebnisse sind Toll! Level Up")
@@ -57,15 +84,14 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
       
     }
     const task=taskGenerator.generate();
-    settasks([...tasks, task])
+    settasks([...tasks , task])
     handleClear()
     setTask(task)
   }
   if(taskcount===0){
     newTask()
   }
-  if(task==null) return <> </>
-
+  if(task==null) return <></>
   return (
     <SafeAreaView style={styles.container}>
       <View style= {styles.topbtnbox}>
