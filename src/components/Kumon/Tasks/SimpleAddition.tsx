@@ -6,7 +6,7 @@ class SimpleAddition extends GeneratedSimpleCalcTask {
   public static generate(): SimpleAddition {
     const firstNumber = Math.floor(Math.random() * 100);
     const secondNumber = Math.floor(Math.random() * 100);
-    const simpleTask = `${firstNumber} + ${secondNumber}`;
+    const simpleTask = `${firstNumber} +r ${secondNumber}`;
     const latexTask = `${firstNumber} + ${secondNumber}`;
     const simpleSolution = `${firstNumber + secondNumber}`;
     const latexSolution = `${firstNumber + secondNumber}`;
