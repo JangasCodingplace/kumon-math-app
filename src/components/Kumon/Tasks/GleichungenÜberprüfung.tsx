@@ -80,8 +80,10 @@ function checkAndReduceEquation(equation: string) {   // String entfernen
     
     // Überprüfen und Kürzen der Brüche
     for (let i = 0; i < parts.length - 1; i++) {
-    const [numerator1, denominator1] = parts[i].split('/').map(part => parseInt(part, 10));
-    const [numerator2, denominator2] = parts[i + 1].split('/').map(part => parseInt(part, 10));
+    const [numerator1, denominator1] = parts[i].includes('/')? parts[i].split('/').map(part => parseInt(part, 10)):
+    [parseInt(parts[i + 1],10),1];
+    const [numerator2, denominator2] = parts[i + 1].includes('/') ? parts[i + 1].split('/').map(part => parseInt(part, 10)):
+    [parseInt(parts[i + 1], 10),1];
     
     // Überprüfen auf Richtigkeit der Gleichung
     if (numerator1 * denominator2 !== numerator2 * denominator1) {
