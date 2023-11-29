@@ -59,9 +59,9 @@
 //#console.log(result);  
 
  
-function checkAndReduceEquation(equation: string) {
+function checkAndReduceEquation(equation: string) {   // String entfernen 
     // Hilfsfunktion für den größten gemeinsamen Teiler (GCD)
-    function gcd(a: number, b: number) {
+    function gcd(a: number, b: number) {   // Number entfernen
     while (b !== 0) {
     const temp = b;
     b = a % b;
