@@ -47,18 +47,51 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
   const svgtobas64=(svgXml:string)=>{
     const base64 =Buffer.from(svgXml).toString("base64")
     console.log(base64)
-    axios.post("http://46.101.198.162:8000/process-task",{
-      "user": "string",
-      "base64_image": base64,
-      "task": "string"
-    }
-    ).then(response=>{
-      console.log(response.data)
-    })
+    // axios.post("http://46.101.198.162:8000/process-task",{
+    //   "user": "string",
+    //   "base64_image": base64,
+    //   "task": "string"
+    // }
+    // ).then(response=>{
+    //   console.log(response.data)
+    // })
 
-    
+
     return base64
   }
+  
+  function checksolution(input:string,version:number,solution:number){
+   console.log(input.replace("&#x5c", ""))
+    input=input.replace("&#x5c", "")
+    var inputnum=36/12
+    
+    
+    
+    
+    if(version===1&&inputnum===solution){
+      console.log("right solution")
+      return
+    }else if(version===2&& Number(inputnum)==solution&&checkslach(inputnum)){
+      console.log("right soulution, no devion")
+      return
+    }else if(version===3&& Number(inputnum)==solution){
+      console.log("the input is correct")
+      return
+    }else{
+      console.log("no")
+    }
+    function checkslach(input:string){
+      
+      var inputarrey=input.split("")
+      for(var i=0;i<inputarrey.length;i++){
+        if(inputarrey[i]=="/"){
+          return false
+        }
+      }
+      return true
+    }
+  }
+  checksolution("\frac { 36 } { 12 } = \frac { 18 } { 6 }",2,3/1)
   
   const newTask= ()=>{
     setTaskcount(taskcount+1)
