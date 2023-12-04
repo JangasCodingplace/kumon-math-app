@@ -50,11 +50,11 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
     axios.post("http://46.101.198.162:8000/process-task",{
       "user": "string",
       "base64_image": base64,
-      "task": {simpleTask : "string",
+      "task": { simpleTask : "string",
                 latexTask : "string",
                 simpleSolution : "string",
                 latexSolution : "string",
-                version :Number}
+                version :"1,2,3,4"}
     }).then(response=>{
       console.log(response.data)
     })
