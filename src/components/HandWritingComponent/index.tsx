@@ -47,14 +47,17 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
   const svgtobas64=(svgXml:string)=>{
     const base64 =Buffer.from(svgXml).toString("base64")
     console.log(base64)
-    // axios.post("http://46.101.198.162:8000/process-task",{
-    //   "user": "string",
-    //   "base64_image": base64,
-    //   "task": "string"
-    // }
-    // ).then(response=>{
-    //   console.log(response.data)
-    // })
+    axios.post("http://46.101.198.162:8000/process-task",{
+      "user": "string",
+      "base64_image": base64,
+      "task": {simpleTask : "string",
+                latexTask : "string",
+                simpleSolution : "string",
+                latexSolution : "string",
+                version :Number}
+    }).then(response=>{
+      console.log(response.data)
+    })
 
 
     return base64
@@ -71,7 +74,7 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
     if(version===1&&inputnum===solution){
       console.log("right solution")
       return
-    }else if(version===2&& Number(inputnum)==solution&&checkslach(inputnum)){
+    }else if(version===2&& Number(inputnum)==solution&&checkslach(`inputnum`)){
       console.log("right soulution, no devion")
       return
     }else if(version===3&& Number(inputnum)==solution){

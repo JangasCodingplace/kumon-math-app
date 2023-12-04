@@ -7,7 +7,7 @@ import DashboardView from './src/components/Dashboard/index';
 import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { useState } from 'react';
-
+import Statistic from './src/components/Kumon/Statistic'
 
 
 
@@ -36,7 +36,7 @@ const Tab = createBottomTabNavigator();
 
 
 
-const styleicons = ({focused, size, route})=>{
+const styleicons = ({focused, size, route}:any)=>{
   if (route.name === 'Home') {
     return (
       <Ionicons
@@ -96,6 +96,7 @@ export default function App() {
         <Tab.Screen name="Task" component={BaseView} />
         <Tab.Screen name="Settings" component={Settings} />
         <Tab.Screen name="Credits" component={Credits} />
+        <Tab.Screen name="Statistik" component={Statistic} />
         
     </Tab.Navigator> 
       
