@@ -124,9 +124,9 @@ let exampleEquation = "48/12 = 18/4 = 48/12";
 let result = checkAndReduceEquation(exampleEquation);
 console.log(result);
 
-function checkAndReduceEquation(equation) {
+function checkAndReduceEquation(equation: string) {
   // Hilfsfunktion für den größten gemeinsamen Teiler (GCD)
-  function gcd(a, b) {
+  function gcd(a: number, b: number) {
     while (b !== 0) {
       const temp = b;
       b = a % b;
