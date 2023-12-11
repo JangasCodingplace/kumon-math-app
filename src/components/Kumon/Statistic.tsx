@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Text, Switch, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createDrawerNavigator } from '@react-navigation/drawer'
 import { useState } from 'react';
 
 const Statistic= ({route}: any) => {
@@ -12,3 +11,22 @@ const Statistic= ({route}: any) => {
   }
 
 export default Statistic;
+let counter: number = 0
+const counterButton : HTMLButtonElement |
+null =
+document.getElementById("counterButton") as 
+HTMLButtonElement;
+const counterElement :  HTMLElement | null =
+document.getElementById("counter")
+
+if (counterButton && counterElement) {
+  counterButton.addEventListener('click',
+()  => {
+     counter++;
+     if (counterElement) {
+      counterElement.textContent =
+      `Counter: ${counter}`;
+     }
+     });
+    }
+
