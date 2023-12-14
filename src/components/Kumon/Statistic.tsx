@@ -6,10 +6,8 @@ import { useState } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Statistic= ({route}: any) => {
-    return(
-     <View><Text>Du hast 10 Aufgaben gemacht</Text></View>
-    )
-  }
+    
+    
 
 
 
@@ -26,13 +24,13 @@ const CounterComponent: React.FC = () => {
 onPress={handlePress} style={styles.button}
 >
   <Text style={styles.buttonText}
-  >Click me!</Text>
+  >CDrück mich</Text>
   </TouchableOpacity>
   <Text style={styles.counterText}
   >Counter: {counter}</Text>
   </View>
   );
-};
+}};
 
 
 const styles = StyleSheet.create({
