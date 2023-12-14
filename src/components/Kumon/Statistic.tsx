@@ -27,7 +27,7 @@ const handleReset =() => {
       <Text
 onPress={handlePress} style={styles.button}>
   <Text style={styles.buttonText}
-  >Drück mich</Text>
+  >Drücken</Text>
   </Text>
   <Text 
   onPress={handleReset} style={styles.button}
