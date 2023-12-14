@@ -10,7 +10,6 @@ const Statistic= ({route}: any) => {
     
 
 
-
 const CounterComponent: React.FC = () => {
   const[counter, setCounter] =
   useState(0)
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
   },
 button: {
   padding: 10,
-  backgroundColor: 'white',
+  backgroundColor: 'black',
   borderRadius: 5,
   marginBottom: 10,
 },
