@@ -64,9 +64,19 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
                 version :"1,2,3,4"}
     }).then(response=>{
       console.log(response.data)
+
     })
     return base64
   }
+  axios.get("http://46.101.198.162:8000/get-tasks/string").then(response=>{
+        console.log(response.data)
+  })
+  // axios.get("http://46.101.198.162:8000/get-tasks/string").then(response=>{
+  //   console.log(response.data)
+  
+  // })
+  // axios.get("http://46.101.198.162:8000/get-tasks/{$USERNAME}")
+
   
 
 
@@ -143,6 +153,8 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
     settasks([...tasks , task])
     handleClear()
     setTask(task)
+    console.log(task)
+
   }
   if(taskcount===0){
     newTask()
