@@ -3,67 +3,46 @@ import { StyleSheet, View, Text, Switch, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
-
-const Statistic= ({route}: any) => {
-    
-    
-
-
-
-  const[counter, setCounter] =
-  useState(0)
-
-  const handlePress = () => {
-    setCounter(counter + 1);
-  };
-
-const handleReset =() => {
-  setCounter(0);
+   interface StatisticsProps {
+  percentages: number[];
 }
-  return(
+
+const Statistic = ({ percentages } :StatisticsProps) => {
+  return (
     <View style={styles.container}>
-      <Text
-onPress={handlePress} style={styles.button}>
-  <Text style={styles.buttonText}
-  >Drücken</Text>
-  </Text>
-  <Text 
-  onPress={handleReset} style={styles.button}
-  >
-    <Text style={styles.buttonText}
-  >Reset</Text>
-  </Text>
-  
-  <Text style={styles.counterText}
-  >Counter: {counter}</Text>
-  </View>
+      <Text style={styles.header}
+      >Statistische Aufteilung:</Text>
+      {percentages.map ((percentage, index) => (
+    
+    <Text key={index}
+    style={styles.itemContainer}>
+      {`${index + 1}. ${percentage}%`}
+      </Text>
+      ))}
+   </View>
   );
-};
+      };
+   
+      
 
+    const styles = StyleSheet.create ({
+    container: {
+      padding: 16,
+    },
+    header: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginBottom: 8,
+    },
+    itemContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 8,
+    },
+    });
 
-const styles = StyleSheet.create({
-  container :{
-    flex : 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-button: {
-  padding: 10,
-  backgroundColor: 'blue',
-  borderRadius: 5,
-  marginBottom: 10,
-},
-buttonText: {
-  color: 'black',
-  fontSize: 20,
-},
-counterText: {
-  fontSize: 20,
-},
-});
-
-export default Statistic;
+export default Statistic; 
 
 
