@@ -5,6 +5,10 @@ import { GeneratedSimpleCalcTask } from '../Kumon/GenericTask';
 import { Ionicons } from '@expo/vector-icons';
 import { Buffer } from 'buffer';
 import axios from 'axios';
+import { Image } from 'react-native';
+import { captureRef } from 'react-native-view-shot';
+import Svg, { G, Path } from 'react-native-svg';
+
 
 interface HandWritingComponentProps {
   taskGenerator: typeof GeneratedSimpleCalcTask
@@ -44,9 +48,12 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
 
 
 
+
+
+
   const svgtobas64=(svgXml:string)=>{
     const base64 =Buffer.from(svgXml).toString("base64")
-    console.log(base64)
+
     axios.post("http://46.101.198.162:8000/process-task",{
       "user": "string",
       "base64_image": base64,
@@ -57,12 +64,26 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
                 version :"1,2,3,4"}
     }).then(response=>{
       console.log(response.data)
+
     })
-
-
     return base64
   }
+  axios.get("http://46.101.198.162:8000/get-tasks/string").then(response=>{
+        console.log(response.data)
+  })
+  // axios.get("http://46.101.198.162:8000/get-tasks/string").then(response=>{
+  //   console.log(response.data)
   
+  // })
+  // axios.get("http://46.101.198.162:8000/get-tasks/{$USERNAME}")
+
+  
+
+
+  
+
+
+
   function checksolution(input:string,version:number,solution:number){
    console.log(input.replace("&#x5c", ""))
     input=input.replace("&#x5c", "")
@@ -132,6 +153,8 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
     settasks([...tasks , task])
     handleClear()
     setTask(task)
+    console.log(task)
+
   }
   if(taskcount===0){
     newTask()
