@@ -163,8 +163,12 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
             // Extract the values of simpleSolution and latex_normal
             const simpleSolutions = [];
             const latexNormals = [];
+            const latexTask = [];
+            const version = [];
             for (const item of data) {
               simpleSolutions.push(item.task.simpleSolution);
+              version.push(item.task.version);
+              latexTask.push(item.task.latexTask);
               latexNormals.push(item.ai_response.latex_normal);
             }
 
@@ -172,10 +176,58 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
             console.log('simpleSolution:', simpleSolutions);
             console.log('latex_normallatex:', latexNormals);
             
-          
+            const result=[]
 
-          }
+            for(var i=0;i<simpleSolutions.length;i++)
+              if(simpleSolutions[i]===latexNormals[i]){
+                result.push({
+                  task:latexTask[i],
+                  solution:simpleSolutions[i],
+                  answer:latexNormals[i],
+                  math:true,
+                  version:version[i]
+                })
+              }else{
+                //calculate if everyrhing is right
+                var steps=latexNormals[i].split("=")
+                if(steps.length>=1){
+                  //if somthing is false
+                  var solution=true
+                  for(var o=0;o<=steps.length-1;o++){
+                    if(eval(steps[o])!=eval(simpleSolutions[i])){
+                      solution=false
+                    }
+                  }
+               
+                if(solution===false){
+                  //show that
+                  result.push({
+                    task:latexTask[i],
+                    solution:simpleSolutions[i],
+                    answer:latexNormals[i],
+                    math:false,
+                    version:version[i]
+                  })
+                }else{
+                  result.push({
+                    task:latexTask[i],
+                    solution:simpleSolutions[i],
+                    answer:latexNormals[i],
+                    math:true,
+                    version:version[i]
+                  })
+                }
+                }
 
+              }
+              console.log("===============================================================================")
+              console.log(result)
+              console.log("===============================================================================")
+
+              return result
+
+            }
+            checkcheck()
 
 
   if(taskcount===0){
