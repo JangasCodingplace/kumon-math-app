@@ -50,17 +50,17 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
 
 
 
-  const svgtobas64=(svgXml:string)=>{
+  const postdata=(svgXml:string)=>{
     const base64 =Buffer.from(svgXml).toString("base64")
-
+    console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU    "+task?.version)
     axios.post("http://46.101.198.162:8000/process-task",{
       "user": "string",
       "base64_image": base64,
-      "task": { simpleTask : "string",
-                latexTask : "string",
-                simpleSolution : "string",
-                latexSolution : "string",
-                version :"1,2,3,4"}
+      "task": { simpleTask : task?.simpleSolution,
+                latexTask : task?.latexTask,
+                simpleSolution : task?.simpleSolution,
+                latexSolution : task?.latexSolution,
+                version :task?.version}
     }).then(response=>{
       console.log(response.data)
 
@@ -118,14 +118,13 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
   
   const newTask= ()=>{
     setTaskcount(taskcount+1)
-    console.log(canvasRef.current?.getSvg());
     const svgXml = canvasRef.current?.getSvg();
 
 
 
     // console.log(svgXml)
     if (svgXml){
-      svgtobas64(svgXml)
+      postdata(svgXml)
     }
 
 
@@ -152,7 +151,10 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
     settasks([...tasks , task])
     handleClear()
     setTask(task)
+    console.log("ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt")
+
     console.log(task)
+    console.log("ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt")
 
   }
 

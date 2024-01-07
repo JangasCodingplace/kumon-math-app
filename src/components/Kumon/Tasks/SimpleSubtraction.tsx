@@ -1,3 +1,4 @@
+import { version } from "react";
 import { GeneratedSimpleCalcTask } from "../GenericTask";
 
 
@@ -11,7 +12,8 @@ class SimpleSubtraction extends GeneratedSimpleCalcTask {
     const latexTask = `${firstNumber} - ${secondNumber}`;
     const simpleSolution = `${firstNumber - secondNumber}`;
     const latexSolution = `${firstNumber - secondNumber}`;
-    return new SimpleSubtraction(simpleTask, latexTask, simpleSolution, latexSolution);
+    const version="4"
+    return new SimpleSubtraction(simpleTask, latexTask, simpleSolution, latexSolution,version);
   }
 }
 
