@@ -6,7 +6,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { Buffer } from 'buffer';
 import axios from 'axios';
 import { Image } from 'react-native';
-import { captureRef } from 'react-native-view-shot';
 import Svg, { G, Path } from 'react-native-svg';
 
 
@@ -156,6 +155,29 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
     console.log(task)
 
   }
+
+          function checkcheck(){
+            const jsonString = '[{"ai_response": {"latex_normal": "2 + 2 = 4", "type": "mathpix"}, "task": {"latexSolution": "4", "latexTask": "2 + 2", "simpleSolution": "4", "version": "1,2,3,4"}, "user": "string"}, {"ai_response": {"latex_normal": "44 - 2 = 2", "type": "mathpix"}, "task": {"latexSolution": "42", "latexTask": "44-2", "simpleSolution": "42", "version": "1,2,3,4"}, "user": "string"}, {"ai_response": {"latex_normal": "2", "type": "mathpix"}, "task": {"latexSolution": "2", "latexTask": "1+1", "simpleSolution": "2", "version": "1,2,3,4"}, "user": "string"}, {"ai_response": {"latex_normal": "2", "type": "mathpix"}, "task": {"latexSolution": "1", "latexTask": "3 - 2", "simpleSolution": "1", "version": "1,2,3,4"}, "user": "string"}]';
+            const data = JSON.parse(jsonString);
+
+            // Extract the values of simpleSolution and latex_normal
+            const simpleSolutions = [];
+            const latexNormals = [];
+            for (const item of data) {
+              simpleSolutions.push(item.task.simpleSolution);
+              latexNormals.push(item.ai_response.latex_normal);
+            }
+
+            // Print the extracted values
+            console.log('simpleSolution:', simpleSolutions);
+            console.log('latex_normallatex:', latexNormals);
+            
+          
+
+          }
+
+
+
   if(taskcount===0){
     newTask()
   }
