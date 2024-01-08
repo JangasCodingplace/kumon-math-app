@@ -7,7 +7,7 @@ import DashboardView from './src/components/Dashboard/index';
 import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { useState } from 'react';
-import Statistic from './src/components/Kumon/Statistic'
+import Statistic from './src/components/Kumon/test'
 
 
 
