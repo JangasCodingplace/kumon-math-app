@@ -10,6 +10,8 @@ export interface SimpleCalcTask extends GenericTask {
   latexTask: string
   simpleSolution: string
   latexSolution: string
+  version:string
+
 }
 
 export class GeneratedSimpleCalcTask implements SimpleCalcTask {
@@ -17,13 +19,15 @@ export class GeneratedSimpleCalcTask implements SimpleCalcTask {
   latexTask: string
   simpleSolution: string
   latexSolution: string
+  version:string
   public static taskId: string = "none-unique"
 
-  constructor(simpleTask: string, latexTask: string, simpleSolution: string, latexSolution: string) {
+  constructor(simpleTask: string, latexTask: string, simpleSolution: string, latexSolution: string,version:string) {
     this.simpleTask = simpleTask
     this.latexTask = latexTask
     this.simpleSolution = simpleSolution
     this.latexSolution = latexSolution
+    this.version=version
   }
 
   public static generate(): GeneratedSimpleCalcTask {

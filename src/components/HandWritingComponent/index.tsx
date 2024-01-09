@@ -6,7 +6,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { Buffer } from 'buffer';
 import axios from 'axios';
 import { Image } from 'react-native';
-import { captureRef } from 'react-native-view-shot';
 import Svg, { G, Path } from 'react-native-svg';
 
 
@@ -39,33 +38,22 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
   const righttasks=6
   const tasklimit=9
 
-  // version1
-  const baseUrl = 'https://google.com';
- 
-  // axios.get(baseUrl).then((response) => {
-  //   console.log(response.data);
-  // });
 
 
-
-
-
-
-  const svgtobas64=(svgXml:string)=>{
+  const postdata=(svgXml:string)=>{
     const base64 =Buffer.from(svgXml).toString("base64")
-
     axios.post("http://46.101.198.162:8000/process-task",{
       "user": "string",
       "base64_image": base64,
-      "task": { simpleTask : "string",
-                latexTask : "string",
-                simpleSolution : "string",
-                latexSolution : "string",
-                version :"1,2,3,4"}
+      "task": { simpleTask : task?.simpleSolution,
+                latexTask : task?.latexTask,
+                simpleSolution : task?.simpleSolution,
+                latexSolution : task?.latexSolution,
+                version :task?.version}
     }).then(response=>{
       console.log(response.data)
 
-    })
+    }) 
     return base64
   }
   axios.get("http://46.101.198.162:8000/get-tasks/string").then(response=>{
@@ -76,57 +64,26 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
   
   // })
   // axios.get("http://46.101.198.162:8000/get-tasks/{$USERNAME}")
+  
+
+  axios.get("http://46.101.198.162:8000/get-tasks/string").then(response=>{
+    
+      checkcheck(response.data)
+  })
 
   
 
 
-  
 
-
-
-  function checksolution(input:string,version:number,solution:number){
-   console.log(input.replace("&#x5c", ""))
-    input=input.replace("&#x5c", "")
-    var inputnum=36/12
-    
-    
-    
-    
-    if(version===1&&inputnum===solution){
-      console.log("right solution")
-      return
-    }else if(version===2&& Number(inputnum)==solution&&checkslach(`inputnum`)){
-      console.log("right soulution, no devion")
-      return
-    }else if(version===3&& Number(inputnum)==solution){
-      console.log("the input is correct")
-      return
-    }else{
-      console.log("no")
-    }
-    function checkslach(input:string){
-      
-      var inputarrey=input.split("")
-      for(var i=0;i<inputarrey.length;i++){
-        if(inputarrey[i]=="/"){
-          return false
-        }
-      }
-      return true
-    }
-  }
-  checksolution("\frac { 36 } { 12 } = \frac { 18 } { 6 }",2,3/1)
-  
   const newTask= ()=>{
     setTaskcount(taskcount+1)
-    console.log(canvasRef.current?.getSvg());
     const svgXml = canvasRef.current?.getSvg();
 
 
 
     // console.log(svgXml)
     if (svgXml){
-      svgtobas64(svgXml)
+      postdata(svgXml)
     }
 
 
@@ -153,9 +110,75 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
     settasks([...tasks , task])
     handleClear()
     setTask(task)
-    console.log(task)
-
   }
+
+          function checkcheck(data:any){
+            // const jsonString = '[{"ai_response": {"latex_normal": "2 + 2 = 4", "type": "mathpix"}, "task": {"latexSolution": "4", "latexTask": "2 + 2", "simpleSolution": "4", "version": "1,2,3,4"}, "user": "string"}, {"ai_response": {"latex_normal": "44 - 2 = 2", "type": "mathpix"}, "task": {"latexSolution": "42", "latexTask": "44-2", "simpleSolution": "42", "version": "1,2,3,4"}, "user": "string"}, {"ai_response": {"latex_normal": "2", "type": "mathpix"}, "task": {"latexSolution": "2", "latexTask": "1+1", "simpleSolution": "2", "version": "1,2,3,4"}, "user": "string"}, {"ai_response": {"latex_normal": "2", "type": "mathpix"}, "task": {"latexSolution": "1", "latexTask": "3 - 2", "simpleSolution": "1", "version": "1,2,3,4"}, "user": "string"}]';
+            const simpleSolutions = [];
+            const latexNormals = [];
+            const latexTask = [];
+            const version = [];
+            for (const item of data) {
+              simpleSolutions.push(item.task.simpleSolution);
+              version.push(item.task.version);
+              latexTask.push(item.task.latexTask);
+              latexNormals.push(item.ai_response.latex_normal);
+            }
+              
+            const result=[]
+
+            for(var i=0;i<simpleSolutions.length;i++)
+              if(simpleSolutions[i]===latexNormals[i]){
+                result.push({
+                  task:latexTask[i],
+                  solution:simpleSolutions[i],
+                  answer:latexNormals[i],
+                  math:true,
+                  version:version[i]
+                })
+              }else{
+                //calculate if everyrhing is right
+                var steps=latexNormals[i].split("=")
+                if(steps.length>=1){
+                  //if somthing is false
+                  var solution=true
+                  for(var o=0;o<=steps.length-1;o++){
+                    if(eval(steps[o])!=eval(simpleSolutions[i])){
+                      solution=false
+                    }
+                  }
+               
+                if(solution===false){
+                  //show that
+                  result.push({
+                    task:latexTask[i],
+                    solution:simpleSolutions[i],
+                    answer:latexNormals[i],
+                    math:false,
+                    version:version[i]
+                  })
+                }else{
+                  result.push({
+                    task:latexTask[i],
+                    solution:simpleSolutions[i],
+                    answer:latexNormals[i],
+                    math:true,
+                    version:version[i]
+                  })
+                }
+                }
+
+              }
+              console.log("===============================================================================")
+              console.log(result)
+              console.log("===============================================================================")
+
+              return result
+
+            }
+            
+
+
   if(taskcount===0){
     newTask()
   }

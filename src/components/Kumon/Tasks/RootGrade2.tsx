@@ -21,7 +21,9 @@ class RootGrade2 extends GeneratedSimpleCalcTask {
 
     const simpleSolution = `${root1}, ${root2}`;
     const latexSolution = `${root1}, ${root2}`;
-    return new RootGrade2(simpleTask, latexTask, simpleSolution, latexSolution);
+
+    const version="1"
+    return new RootGrade2(simpleTask, latexTask, simpleSolution, latexSolution,version);
   }
 }
 
