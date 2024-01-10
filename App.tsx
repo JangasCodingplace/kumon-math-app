@@ -8,6 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { useState } from 'react';
 import Statistic from './src/components/Kumon/Statistikkk'
+// import Statistic from './src/components/Kumon/test'
 
 
 
