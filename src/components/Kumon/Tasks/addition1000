@@ -1,5 +1,5 @@
 import { version } from "react";
-import { addition1000 } from "../GenericTask";
+import { GeneratedSimpleCalcTask } from "../GenericTask";
 
 
 class addition1000 extends GeneratedSimpleCalcTask {
