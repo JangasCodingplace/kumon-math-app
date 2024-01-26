@@ -89,7 +89,8 @@ const Statistic = ({ percentages } :StatisticsProps) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://46.101.198.162:8000/get-tasks/string")
+    console.log(global.useridd)
+    axios.get(`http://46.101.198.162:8000/get-tasks/string`)
       .then(response => {
         setData(checkcheck(response.data));
       });
@@ -107,23 +108,23 @@ const Statistic = ({ percentages } :StatisticsProps) => {
 }
 const startistics=StyleSheet.create({
   true:{
-    backgroundColor:"green",
-    fontSize:50,
-    color:"black",
+    // backgroundColor:"green",
+    fontSize:20,
+    color:"green",
     padding:10,
     margin:10,
     shadowOpacity:1,
-    shadowColor:"black",
-    shadowOffset: {
-      width: 0,
-      height: 9,
-    },
-    elevation:10,
+    shadowColor:"green",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 9,
+    // },
+    // elevation:10,
   },
   false:{
-    backgroundColor:"red",
-    fontSize:50,
-    color:"black",
+    // backgroundColor:"red",
+    fontSize:20,
+    color:"red",
     padding:10,
     margin:10,
   },

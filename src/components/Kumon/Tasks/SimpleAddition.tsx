@@ -5,8 +5,8 @@ import { GeneratedSimpleCalcTask } from "../GenericTask";
 class SimpleAddition extends GeneratedSimpleCalcTask {
   public static taskId = "simple-addition"
   public static generate(): SimpleAddition {
-    const firstNumber = Math.floor(Math.random() * 100);
-    const secondNumber = Math.floor(Math.random() * 100);
+    const firstNumber = Math.floor(Math.random() * 10);
+    const secondNumber = Math.floor(Math.random() * 10);
     const simpleTask = `${firstNumber} +r ${secondNumber}`;
     const latexTask = `${firstNumber} + ${secondNumber}`;
     const simpleSolution = `${firstNumber + secondNumber}`;

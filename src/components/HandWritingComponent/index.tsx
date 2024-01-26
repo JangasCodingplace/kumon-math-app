@@ -16,6 +16,7 @@ interface HandWritingComponentProps {
 
 
 export default ({taskGenerator}: HandWritingComponentProps) => {
+  var userid="string"
   const canvasRef = useRef<CanvasRef>(null);
   const windowDimensions = useWindowDimensions();
   const canvasHeight = Math.max(windowDimensions.height - 300, 0); // 200 ist ein Beispielwert
@@ -43,35 +44,36 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
   const postdata=(svgXml:string)=>{
     const base64 =Buffer.from(svgXml).toString("base64")
     axios.post("http://46.101.198.162:8000/process-task",{
-      "user": "string",
+      "user": global.useridd,
       "base64_image": base64,
       "task": { simpleTask : task?.simpleSolution,
                 latexTask : task?.latexTask,
                 simpleSolution : task?.simpleSolution,
                 latexSolution : task?.latexSolution,
                 version :task?.version}
-    }).then(response=>{
-      console.log(response.data)
+    })
+    // .then(response=>{
+    //   console.log(response.data)
 
-    }) 
+    // }) 
     return base64
   }
-  axios.get("http://46.101.198.162:8000/get-tasks/string").then(response=>{
-        console.log(response.data)
-  })
+  // axios.get("http://46.101.198.162:8000/get-tasks/string").then(response=>{
+  //       console.log(response.data)
+  // })
   // axios.get("http://46.101.198.162:8000/get-tasks/string").then(response=>{
   //   console.log(response.data)
   
   // })
   // axios.get("http://46.101.198.162:8000/get-tasks/{$USERNAME}")
   
-
-  axios.get("http://46.101.198.162:8000/get-tasks/string").then(response=>{
+  
+  axios.get(`http://46.101.198.162:8000/get-tasks/${global.useridd}`).then(response=>{
     
       checkcheck(response.data)
   })
 
-  
+  console.log(global.useridd)
 
 
 
