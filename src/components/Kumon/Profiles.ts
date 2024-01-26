@@ -5,6 +5,7 @@ import RootGrade2 from "./Tasks/RootGrade2";
 import Addition10 from "./Tasks/Addition10";
 import addition100 from "./Tasks/addition100";
 import Multiplication100 from "./Tasks/Muliplikation10";
+import division100 from "./Tasks/division100";
 
 interface Profile {
   name: string
@@ -26,7 +27,7 @@ const profiles: Profile[] = [
     taskTypes: [Multiplication100]
   },{
     name: "Division",
-    taskTypes: [RootGrade2]
+    taskTypes: [division100,]
   }
 ]
 
