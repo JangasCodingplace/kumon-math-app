@@ -13,7 +13,6 @@ class division10 extends GeneratedSimpleCalcTask {
     const simpleSolution = `${secondNumber}`;
     const latexSolution = `${secondNumber}`;
     const version="2"
-    const result = firstNumber % secondNumber === 0 ? firstNumber / secondNumber : firstNumber;
     return new division10(simpleTask, latexTask, simpleSolution, latexSolution,version);
   }
 }
