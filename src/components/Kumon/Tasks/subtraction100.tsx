@@ -2,10 +2,10 @@ import { version } from "react";
 import { GeneratedSimpleCalcTask } from "../GenericTask";
 
 
-class subtraction extends GeneratedSimpleCalcTask {
-  public static taskId = "substraction"
+class subtraction100 extends GeneratedSimpleCalcTask {
+  public static taskId = "substraction10"
 
-  public static generate(): subtraction {
+  public static generate(): subtraction100 {
     const firstNumber = Math.floor(Math.random() * 100);
     const secondNumber = Math.floor(Math.random() * 100);
     const simpleTask = `${firstNumber} - ${secondNumber}`;
@@ -17,4 +17,4 @@ class subtraction extends GeneratedSimpleCalcTask {
   }
 }
 
-export default subtraction;
+export default subtraction100;
