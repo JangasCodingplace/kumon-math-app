@@ -26,7 +26,7 @@ interface Profile {
 const profiles: Profile[] = [
   {
     name: "Addition",
-    taskTypes: [ Addition10,addition100,addition1000]
+    taskTypes: [ Addition10,Addition10,addition100,addition1000]
   },
   {
     name: "Subtrahieren",
