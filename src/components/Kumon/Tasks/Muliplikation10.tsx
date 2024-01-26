@@ -2,9 +2,9 @@ import { version } from "react";
 import { GeneratedSimpleCalcTask } from "../GenericTask";
 
 
-class SimpleMultiplikation extends GeneratedSimpleCalcTask {
+class Multiplication10 extends GeneratedSimpleCalcTask {
   public static taskId = "simple-Multiplication"
-  public static generate(): SimpleMultiplikation {
+  public static generate(): Multiplication10 {
     const firstNumber = Math.floor(Math.random() * 10);
     const secondNumber = Math.floor(Math.random() * 10);
     const simpleTask = `${firstNumber} * ${secondNumber}`;
@@ -12,8 +12,8 @@ class SimpleMultiplikation extends GeneratedSimpleCalcTask {
     const simpleSolution = `${firstNumber * secondNumber}`;
     const latexSolution = `${firstNumber * secondNumber}`;
     const version="2"
-    return new  SimpleMultiplikation(simpleTask, latexTask, simpleSolution, latexSolution,version);
+    return new  Multiplication10(simpleTask, latexTask, simpleSolution, latexSolution,version);
   }
 }
 
-export default SimpleMultiplikation;
+export default Multiplication10;
