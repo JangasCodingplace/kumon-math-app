@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Text, Switch, Image} from 'react-native';
+import { StyleSheet, View, Text, Switch, Image,TextInput} from 'react-native';
 import HandWritingComponent from "./src/components/HandWritingComponent/index";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -9,7 +9,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import { useState } from 'react';
 import Statistic from './src/components/Kumon/Statistikkk'
 // import Statistic from './src/components/Kumon/test'
-
+// import global from './src/components/Kumon/global'
+import { GlobalStateContext } from './src/components/Kumon/global';
 
 
 
@@ -76,8 +77,14 @@ const styleicons = ({focused, size, route}:any)=>{
 }
 
 const Settings= ({route}: any) => {
+  const [UserId,setuserid]=useState("string")
+  global.useridd=UserId
+ 
+  
+  console.log(global.useridd)
   return(
     <View>
+     <View style={styles.stbox}><Text>UserID</Text><TextInput onChangeText={setuserid}></TextInput></View>
      <View style={styles.stbox}><Text>Schriftliche Eingabe</Text><Switch  value={true}></Switch></View>
      <View style={styles.stbox}><Text>Sound</Text><Switch value={true}></Switch></View>
      <View style={styles.stbox}><Text>Tastatureingabe</Text><Switch></Switch></View>
