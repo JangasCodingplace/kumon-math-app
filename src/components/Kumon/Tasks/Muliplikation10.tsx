@@ -12,7 +12,7 @@ class SimpleMultiplikation extends GeneratedSimpleCalcTask {
     const simpleSolution = `${firstNumber * secondNumber}`;
     const latexSolution = `${firstNumber * secondNumber}`;
     const version="2"
-    return new  (simpleTask, latexTask, simpleSolution, latexSolution,version);
+    return new  SimpleMultiplikation(simpleTask, latexTask, simpleSolution, latexSolution,version);
   }
 }
 
