@@ -18,3 +18,4 @@ class division10 extends GeneratedSimpleCalcTask {
 }
 
 export default division10;
+
