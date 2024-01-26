@@ -40,3 +40,4 @@ yarn-error.*
 venv/
 __pycache__/
 *.pyc
+.env
