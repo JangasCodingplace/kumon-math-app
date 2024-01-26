@@ -1,0 +1,19 @@
+import { version } from "react";
+import { GeneratedSimpleCalcTask } from "../GenericTask";
+
+
+class Multiplication extends GeneratedSimpleCalcTask {
+  public static taskId = "multiplication"
+  public static generate(): Multiplication {
+    const firstNumber = Math.floor(Math.random() * 100);
+    const secondNumber = Math.floor(Math.random() * 100);
+    const simpleTask = `${firstNumber} *r ${secondNumber}`;
+    const latexTask = `${firstNumber} * ${secondNumber}`;
+    const simpleSolution = `${firstNumber * secondNumber}`;
+    const latexSolution = `${firstNumber * secondNumber}`;
+    const version="2"
+    return new Multiplication(simpleTask, latexTask, simpleSolution, latexSolution,version);
+  }
+}
+
+export default Multiplication;
