@@ -11,7 +11,8 @@ import Statistic from './src/components/Kumon/Statistikkk'
 // import Statistic from './src/components/Kumon/test'
 // import global from './src/components/Kumon/global'
 import { GlobalStateContext } from './src/components/Kumon/global';
-
+import store from './src/app/store'
+import { Provider } from 'react-redux'
 
 
 

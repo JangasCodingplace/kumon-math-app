@@ -7,6 +7,12 @@ import { Buffer } from 'buffer';
 import axios from 'axios';
 import { Image } from 'react-native';
 import Svg, { G, Path } from 'react-native-svg';
+import store from '../../app/store'
+import { Provider } from 'react-redux'
+import UserSlice from '../../features/UserSlice';
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from '../../features/UserSlice'
+
 
 
 interface HandWritingComponentProps {
@@ -112,6 +118,7 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
     settasks([...tasks , task])
     handleClear()
     setTask(task)
+    console.log( task?.simpleSolution)
   }
 
           function checkcheck(data:any){
@@ -175,6 +182,11 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
               console.log(result)
               console.log("===============================================================================")
 
+              
+              const useuser =useSelector(state => state.Userid.value)
+
+
+
               return result
 
             }
@@ -187,6 +199,7 @@ export default ({taskGenerator}: HandWritingComponentProps) => {
   if(task==null) return <></>
   return (
     <SafeAreaView style={styles.container}>
+      <Provider store={store}></Provider>
       <View style= {styles.topbtnbox}>
         <Text style={styles. tasktext}>{task.show()}</Text>
         <Text style={styles.topbtn} onPress={handleUndo}><Ionicons name={'chevron-back-circle-sharp' } size={50} color={"blue"}/></Text>
