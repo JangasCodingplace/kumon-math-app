@@ -15,7 +15,7 @@ class RootGrade2 extends GeneratedSimpleCalcTask {
 
     const a = factor
     const b = factor * (root1 + root2)
-    const c = factor * root1 * root2
+    const c = factor * root1 * root2 
     const simpleTask = `${a}x^2 + ${b}x + ${c}`;
     const latexTask = `${a}x^2 + ${b}x + ${c}`;
 
