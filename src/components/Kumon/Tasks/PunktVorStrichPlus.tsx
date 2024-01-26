@@ -7,7 +7,7 @@ class PunktVorStrichPlus extends GeneratedSimpleCalcTask {
   public static generate(): PunktVorStrichPlus {
     const firstNumber = Math.floor(Math.random() * 10);
     const secondNumber = Math.floor(Math.random() * 10);
-    const thirdNumber = Math.floor(Math.random() + 100);
+    const thirdNumber = Math.floor(Math.random() * 100);
     const simpleTask = `${firstNumber} * ${secondNumber} + ${thirdNumber}`;
     const latexTask = `${firstNumber} * ${secondNumber} + ${thirdNumber}`;
     const simpleSolution = `${firstNumber * secondNumber + thirdNumber}`;
