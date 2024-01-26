@@ -3,7 +3,7 @@ import { GeneratedSimpleCalcTask } from "../GenericTask";
 
 
 class division10 extends GeneratedSimpleCalcTask {
-  public static taskId = "simple-division"
+  public static taskId = "divison10"
   public static generate(): division10 {
     const firstNumber = Math.floor(Math.random() * 10);
     const secondNumber = Math.floor(Math.random() * 10);
