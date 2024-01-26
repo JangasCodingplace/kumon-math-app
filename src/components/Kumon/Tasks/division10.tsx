@@ -7,7 +7,7 @@ class division10 extends GeneratedSimpleCalcTask {
   public static generate(): division10 {
     const firstNumber = Math.floor(Math.random() * 10);
     const secondNumber = Math.floor(Math.random() * 10);
-    const thirdnumber = firstNumber * secondNumber;
+    const thirdNumber = firstNumber * secondNumber;
     const simpleTask = `${thirdNumber} : ${firstNumber}`;
     const latexTask = `${thirdNumber} : ${firstNumber}`;
     const simpleSolution = `${secondNumber}`;
