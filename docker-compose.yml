@@ -4,7 +4,7 @@ services:
   backend-server:
     build: ./backend-server
     ports:
-      - "8001:80"
+      - "8000:80"
     env_file:
       - ./backend-server/.env
   admin-server:
