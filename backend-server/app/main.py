@@ -127,7 +127,9 @@ def send_base64_to_mathpix(base_64_encoded_image: str) -> dict:
 @app.post("/process-task")
 def process_task(data: domain_types.MathImgTask):
     # return {}
+    print(data.__dict__)
     mathpix_response = send_base64_to_mathpix(data.base64_image)
+    print(mathpix_response)
     collection = config.MONGODB_CLIENT['pina']['handwritten_tasks']
     document = {
         "user": data.user,
