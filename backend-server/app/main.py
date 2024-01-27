@@ -151,16 +151,19 @@ def process_task(data: domain_types.MathImgTask):
 def get_tasks(user: str) -> list[domain_types.TaskResponse]:
     collection = config.MONGODB_CLIENT['pina']['handwritten_tasks']
     tasks = collection.find({"user": user})
-
-    task_responses = [
-        domain_types.TaskResponse(
-            user=task["user"],
-            task=task["task"],
-            ai_response={
-                "type": task["ai_response"]["type"],
-                "latex_normal": task["ai_response"]["response"]["latex_normal"],
-            },
-        )
-        for task in tasks
-    ]
-    return task_responses
+    task_response = []
+    for task in tasks:
+        try:
+            task_response.append(
+                domain_types.TaskResponse(
+                    user=task["user"],
+                    task=task["task"],
+                    ai_response={
+                        "type": task["ai_response"]["type"],
+                        "latex_normal": task["ai_response"]["response"]["latex_normal"],
+                    },
+                )
+            )
+        except Exception as e:
+            print(e)
+    return task_response
