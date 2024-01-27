@@ -6,8 +6,8 @@ class subtraction10 extends GeneratedSimpleCalcTask {
   public static taskId = "simple-substraction"
 
   public static generate(): SimpleSubtraction {
-    const firstNumber = Math.floor(Math.random() * 100);
-    const secondNumber = Math.floor(Math.random() * 100);
+    const firstNumber = Math.floor(Math.random() * 10+5);
+    const secondNumber = Math.floor(Math.random() * 5 +1);
     const simpleTask = `${firstNumber} - ${secondNumber}`;
     const latexTask = `${firstNumber} - ${secondNumber}`;
     const simpleSolution = `${firstNumber - secondNumber}`;
