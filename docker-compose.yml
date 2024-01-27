@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  backend-server:
+    build: ./backend-server
+    ports:
+      - "8001:80"
+    env_file:
+      - ./backend-server/.env
+  admin-server:
+    build: ./admin-server
+    ports:
+      - "8002:80"
+    env_file:
+      - ./admin-server/.env
