@@ -5,6 +5,7 @@ from io import BytesIO
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from datetime import datetime
+from fastapi.middleware.cors import CORSMiddleware
 
 import domain_types
 import config
@@ -13,6 +14,15 @@ load_dotenv()
 
 
 app = FastAPI()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get('/api/student/{student_key}/get-current-task')
